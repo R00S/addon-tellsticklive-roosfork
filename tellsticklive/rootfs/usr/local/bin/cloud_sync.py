@@ -7,6 +7,7 @@ tellstick.conf file when changes are detected.
 """
 
 import argparse
+import base64
 import hashlib
 import hmac
 import json
@@ -23,26 +24,26 @@ from collections import OrderedDict
 
 API_BASE_URL = "https://api.telldus.com"
 
-# Protocol mapping from Telldus Live to tellstick.conf format
-PROTOCOL_MAP = {
-    "arctech": "arctech",
-    "brateck": "brateck",
-    "comen": "comen",
-    "everflourish": "everflourish",
-    "fineoffset": "fineoffset",
-    "fuhaote": "fuhaote",
-    "hasta": "hasta",
-    "ikea": "ikea",
-    "kangtai": "kangtai",
-    "mandolyn": "mandolyn",
-    "oregon": "oregon",
-    "risingsun": "risingsun",
-    "sartano": "sartano",
-    "silvanchip": "silvanchip",
-    "upm": "upm",
-    "waveman": "waveman",
-    "x10": "x10",
-    "yidong": "yidong",
+# Supported protocols for validation
+SUPPORTED_PROTOCOLS = {
+    "arctech",
+    "brateck",
+    "comen",
+    "everflourish",
+    "fineoffset",
+    "fuhaote",
+    "hasta",
+    "ikea",
+    "kangtai",
+    "mandolyn",
+    "oregon",
+    "risingsun",
+    "sartano",
+    "silvanchip",
+    "upm",
+    "waveman",
+    "x10",
+    "yidong",
 }
 
 
@@ -80,8 +81,6 @@ def create_signature(base_string, consumer_secret, token_secret=""):
     signature = hmac.new(
         key.encode("utf-8"), base_string.encode("utf-8"), hashlib.sha1
     )
-    import base64
-
     return base64.b64encode(signature.digest()).decode("utf-8")
 
 
@@ -244,6 +243,7 @@ def read_current_config(config_path):
     devices = []
     current_device = None
     in_parameters = False
+    brace_depth = 0
 
     try:
         with open(config_path) as f:
@@ -252,18 +252,23 @@ def read_current_config(config_path):
 
                 if line.startswith("device {"):
                     current_device = {}
-                elif line == "}" and current_device is not None:
-                    if in_parameters:
-                        in_parameters = False
-                    else:
-                        if "id" in current_device and "name" in current_device:
-                            devices.append(current_device)
-                        current_device = None
-                elif line == "parameters {":
-                    in_parameters = True
+                    brace_depth = 1
                 elif current_device is not None:
-                    # Parse key = value lines
-                    if "=" in line:
+                    if line == "parameters {":
+                        in_parameters = True
+                        brace_depth += 1
+                    elif line == "}":
+                        brace_depth -= 1
+                        if brace_depth == 1:
+                            # Closing parameters block
+                            in_parameters = False
+                        elif brace_depth == 0:
+                            # Closing device block
+                            if "id" in current_device and "name" in current_device:
+                                devices.append(current_device)
+                            current_device = None
+                    elif "=" in line:
+                        # Parse key = value lines
                         key, value = line.split("=", 1)
                         key = key.strip()
                         value = value.strip().strip('"')
