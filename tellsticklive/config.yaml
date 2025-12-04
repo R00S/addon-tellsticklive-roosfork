@@ -18,8 +18,6 @@ options:
   enable_local: true
   enable_live: false
   live_delay: 10
-  enable_cloud_sync: false
-  cloud_sync_interval: 300
   devices:
     - id: 1
       name: Example device
@@ -47,12 +45,6 @@ schema:
   enable_live: bool
   live_uuid: match(^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})?
   live_delay: int
-  enable_cloud_sync: bool
-  cloud_sync_interval: int(60,)?
-  live_public_key: str?
-  live_private_key: str?
-  live_token: str?
-  live_token_secret: str?
   devices:
     - id: int(1,)
       name: str
