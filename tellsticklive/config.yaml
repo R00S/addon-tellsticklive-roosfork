@@ -1,9 +1,9 @@
 ---
 name: TellStick with Telldus Live
-version: dev
+version: 1.0.0
 slug: tellsticklive
 description: TellStick and TellStick Duo service with Telldus Live
-url: https://github.com/erik73/hassio-addons
+url: https://github.com/R00S/addon-tellsticklive-roosfork
 arch:
   - aarch64
   - amd64

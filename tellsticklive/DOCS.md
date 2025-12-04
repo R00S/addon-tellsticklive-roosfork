@@ -9,17 +9,23 @@ to Telldus Live!
 
 ## About
 
-This add-on is a modification of the official TellStick addon.
-It adds the ability to have your devices and sensors published Telldus Live.
-See the official addon documentation for details on device setup.
+This add-on provides TellStick and TellStick Duo support for Home Assistant with
+optional Telldus Live cloud integration.
+
+**Acknowledgments:**
+- This is a fork of [erik73's addon-tellsticklive](https://github.com/erik73/addon-tellsticklive)
+- Originally based on the now-deprecated official Home Assistant TellStick add-on
+- The underlying Telldus library is no longer maintained by the manufacturer, but this
+  fork continues to provide TellStick support for those who need it
 
 ## Installation
 
 Follow these steps to get the add-on installed on your system:
 
-Add the repository `https://github.com/erik73/hassio-addons`.
-Find the "TellStick with Telldus Live" add-on and click it.
-Click on the "INSTALL" button.
+1. Add this repository to your Home Assistant add-on store:
+   `https://github.com/R00S/addon-tellsticklive-roosfork`
+2. Find the "TellStick with Telldus Live" add-on and click it
+3. Click on the "INSTALL" button
 
 ## How to use
 
@@ -27,10 +33,9 @@ Click on the "INSTALL" button.
 
 After installation you are presented with an example configuration.
 
-Adjust the add-on configuration to match your devices. See the official add-on
-configuration options for details.
-Save the add-on configuration by clicking the "SAVE" button.
-Start the add-on.
+1. Adjust the add-on configuration to match your devices (see Configuration section below)
+2. Save the add-on configuration by clicking the "SAVE" button
+3. Start the add-on
 
 ### Home Assistant integration
 
@@ -48,7 +53,7 @@ This method does NOT require any `configuration.yaml` entries.
 
 #### Option 2: Local TellStick Integration (Direct connection)
 
-If you want to run in local mode (the same way the official addon runs), you will
+If you want to run in local mode (direct connection to the TellStick hardware), you will
 need to add internal communication details to the `configuration.yaml`
 file to enable the integration with the add-on:
 
@@ -75,10 +80,41 @@ Telldus Service (-6)", follow these steps:
 
 ## Configuration
 
-For device configuration, refer to the official addon instructions.
+Configure your devices and sensors in the add-on configuration panel.
 
 All devices configured and working will be visible in your Telldus Live account when
 you have completed the configuration steps below.
+
+### Device Configuration
+
+Each device requires the following parameters:
+
+- **id**: Unique identifier for the device (integer starting from 1)
+- **name**: A friendly name for the device
+- **protocol**: The communication protocol (e.g., `arctech`, `everflourish`)
+- **model**: The device model type, optionally with brand suffix (e.g., `selflearning-switch`, `selflearning-switch:proove`)
+- **house**: House code (format depends on protocol)
+- **unit**: Unit code
+
+Example device configuration:
+
+```yaml
+devices:
+  - id: 1
+    name: Living Room Light
+    protocol: arctech
+    model: selflearning-switch:proove
+    house: "30123030"
+    unit: "1"
+  - id: 2
+    name: Kitchen Switch
+    protocol: arctech
+    model: codeswitch
+    house: A
+    unit: "4"
+```
+
+### Sensor Configuration
 
 Example sensor configuration:
 
@@ -126,7 +162,39 @@ The model of the sensor. See above regarding the service call to find this infor
 
 ## Service calls
 
-See the official addon instructions.
+You can control TellStick devices using the `hassio.addon_stdin` service call.
+
+### Available functions:
+
+- **on**: Turn device on
+- **off**: Turn device off
+- **dim**: Dim device (requires level parameter)
+- **bell**: Ring bell device
+- **list**: List all configured devices
+- **list-sensors**: List all detected sensors
+
+### Example service calls:
+
+Turn on device 1:
+```yaml
+service: hassio.addon_stdin
+data:
+  addon: e9305338_tellsticklive
+  input:
+    function: "on"
+    device: 1
+```
+
+List sensors:
+```yaml
+service: hassio.addon_stdin
+data:
+  addon: e9305338_tellsticklive
+  input:
+    function: "list-sensors"
+```
+
+**Note:** Replace `e9305338_tellsticklive` with your actual add-on slug (shown in the add-on logs).
 
 ## How to enable the Telldus Live connection
 
@@ -264,9 +332,18 @@ model: selflearning-switch:proove
 
 ## Support
 
-Got questions?
+Got questions or found a bug?
 
-You could [open an issue here][issue] GitHub.
+- [Open an issue on GitHub][issue]
+- Check the [Home Assistant Community Forums](https://community.home-assistant.io/) for TellStick discussions
+
+## Acknowledgments
+
+This add-on would not be possible without the work of:
+
+- **Erik Hilton (erik73)** - Original author of the Telldus Live add-on fork
+- **Home Assistant Team** - Original TellStick add-on (now deprecated)
+- **Telldus Technologies** - Original telldusd daemon and protocol specifications
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
@@ -274,6 +351,6 @@ You could [open an issue here][issue] GitHub.
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [conf]: http://developer.telldus.com/wiki/TellStick_conf
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
-[issue]: https://github.com/erik73/addon-tellsticklive/issues
+[issue]: https://github.com/R00S/addon-tellsticklive-roosfork/issues
 [protocol-list]: http://developer.telldus.com/wiki/TellStick_conf
-[repository]: https://github.com/erik73/hassio-addons
+[repository]: https://github.com/R00S/addon-tellsticklive-roosfork
