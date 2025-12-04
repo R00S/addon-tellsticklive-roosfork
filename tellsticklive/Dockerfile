@@ -55,6 +55,7 @@ RUN apk add --no-cache \
     && sed -i 's/context.verify_mode = ssl.CERT_REQUIRED/# context.verify_mode = ssl.CERT_REQUIRED  # Already set by PROTOCOL_TLS_CLIENT/g' tellive/tellstick.py \
     && sed -i 's/ssl.match_hostname(sock.getpeercert(), address\[0\])/# ssl.match_hostname handled by check_hostname=True/g' tellive/tellstick.py \
     && sed -i 's/socket.SOCK_STREAM))/socket.SOCK_STREAM), server_hostname=address[0])/g' tellive/tellstick.py \
+    && grep -q 'server_hostname=address\[0\]' tellive/tellstick.py \
     && python setup.py install \
     && apk del .build-dependencies \
     && rm -rf /usr/src/telldus \
