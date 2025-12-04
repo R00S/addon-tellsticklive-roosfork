@@ -11,7 +11,7 @@ if bashio::config.true "enable_live"; then
     {
         echo "[settings]"
         # Only write uuid if it's set
-        if bashio::var.has_value "${UUID}"; then
+        if bashio::config.has_value "live_uuid"; then
             echo "uuid = ${UUID}"
         fi
         echo "debug = False"

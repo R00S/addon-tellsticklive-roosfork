@@ -12,9 +12,9 @@ SOCKET_WAIT=0
 while [[ ! -S /tmp/TelldusClient ]] || [[ ! -S /tmp/TelldusEvents ]]; do
     sleep 1
     SOCKET_WAIT=$((SOCKET_WAIT + 1))
-    if [[ ${SOCKET_WAIT} -ge 30 ]]; then
+    if [[ ${SOCKET_WAIT} -ge 60 ]]; then
         bashio::log.error "Timeout waiting for telldusd sockets"
-        break
+        exit 1
     fi
     # Check if telldusd is still running
     if ! kill -0 ${TELLDUSD_PID} 2>/dev/null; then
