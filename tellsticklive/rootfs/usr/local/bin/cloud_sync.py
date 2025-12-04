@@ -16,35 +16,12 @@ import os
 import random
 import string
 import subprocess
-import sys
 import time
 import urllib.parse
 import urllib.request
 from collections import OrderedDict
 
 API_BASE_URL = "https://api.telldus.com"
-
-# Supported protocols for validation
-SUPPORTED_PROTOCOLS = {
-    "arctech",
-    "brateck",
-    "comen",
-    "everflourish",
-    "fineoffset",
-    "fuhaote",
-    "hasta",
-    "ikea",
-    "kangtai",
-    "mandolyn",
-    "oregon",
-    "risingsun",
-    "sartano",
-    "silvanchip",
-    "upm",
-    "waveman",
-    "x10",
-    "yidong",
-}
 
 
 def generate_nonce(length=32):
@@ -363,8 +340,6 @@ def main():
     logging.info("Config path: %s", args.config)
     logging.info("Sync interval: %d seconds", args.interval)
 
-    last_devices = None
-
     while True:
         try:
             # Fetch devices from cloud
@@ -413,8 +388,6 @@ def main():
                 restart_telldusd()
             else:
                 logging.debug("No changes detected")
-
-            last_devices = cloud_devices
 
         except KeyboardInterrupt:
             logging.info("Interrupted, exiting...")
