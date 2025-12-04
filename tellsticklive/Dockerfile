@@ -51,6 +51,7 @@ RUN apk add --no-cache \
     && git clone -b master --depth 1 https://github.com/erijo/tellive-py \
     && cd tellive-py \
     && sed -i 's/ssl.PROTOCOL_TLSv1/ssl.PROTOCOL_TLS_CLIENT/g' tellive/tellstick.py \
+    && grep -q 'ssl.PROTOCOL_TLS_CLIENT' tellive/tellstick.py \
     && python setup.py install \
     && apk del .build-dependencies \
     && rm -rf /usr/src/telldus \
