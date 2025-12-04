@@ -42,7 +42,9 @@ if [[ -S /tmp/TelldusClient ]] && [[ -S /tmp/TelldusEvents ]]; then
         bashio::log.info "  host: ${ADDON_HOSTNAME}"
         bashio::log.info "  port: [50800, 50801]"
         bashio::log.info ""
-        bashio::log.info "Then restart Home Assistant to connect."
+        bashio::log.info "IMPORTANT: If you see 'Could not connect to Telldus Service'"
+        bashio::log.info "errors, you must RESTART Home Assistant after this add-on"
+        bashio::log.info "has fully started. Go to Settings -> System -> Restart."
         bashio::log.info "-----------------------------------------------------------"
     fi
 fi
