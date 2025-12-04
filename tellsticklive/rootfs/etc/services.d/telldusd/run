@@ -31,6 +31,19 @@ if [[ -S /tmp/TelldusClient ]] && [[ -S /tmp/TelldusEvents ]]; then
         socat TCP-LISTEN:50800,reuseaddr,fork UNIX-CONNECT:/tmp/TelldusClient &
         socat TCP-LISTEN:50801,reuseaddr,fork UNIX-CONNECT:/tmp/TelldusEvents &
         bashio::log.info "Socat TCP-to-UNIX bridges started on ports 50800 and 50801"
+        
+        # Log the hostname for users to use in their configuration.yaml
+        ADDON_HOSTNAME=$(hostname)
+        bashio::log.info "-----------------------------------------------------------"
+        bashio::log.info "TellStick service is ready for Home Assistant!"
+        bashio::log.info "Add this to your configuration.yaml:"
+        bashio::log.info ""
+        bashio::log.info "tellstick:"
+        bashio::log.info "  host: ${ADDON_HOSTNAME}"
+        bashio::log.info "  port: [50800, 50801]"
+        bashio::log.info ""
+        bashio::log.info "Then restart Home Assistant to connect."
+        bashio::log.info "-----------------------------------------------------------"
     fi
 fi
 

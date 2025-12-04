@@ -62,12 +62,16 @@ devices:
 
 Add the following to your `configuration.yaml`:
 
-> **Note**: The hostname follows the format `{repository_id}-tellsticklive`. The example below uses `32b8266a-tellsticklive`. If this doesn't work, check your add-on's "Hostname" field in the add-on info panel.
+> **Important**: The hostname is unique to each add-on installation. To find your correct hostname:
+> 1. Start the add-on and check the logs
+> 2. Look for the message showing your exact `tellstick:` configuration
+> 3. Copy the hostname shown in the logs to your `configuration.yaml`
 
 ```yaml
 # TellStick core integration
+# Replace YOUR_ADDON_HOSTNAME with the hostname shown in the add-on logs
 tellstick:
-  host: 32b8266a-tellsticklive
+  host: YOUR_ADDON_HOSTNAME
   port: [50800, 50801]
 
 # Enable TellStick switches

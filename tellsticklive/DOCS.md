@@ -42,10 +42,15 @@ file to enable the integration with the add-on:
 
 ```yaml
 # Example configuration.yaml entry
+# Replace YOUR_ADDON_HOSTNAME with the hostname shown in the add-on logs
 tellstick:
-  host: 32b8266a-tellsticklive
+  host: YOUR_ADDON_HOSTNAME
   port: [50800, 50801]
 ```
+
+**Finding Your Hostname**: Start the add-on and check the logs. When local mode is
+enabled, the logs will display the exact configuration you need to add to your
+`configuration.yaml`, including the correct hostname.
 
 ## Configuration
 
