@@ -231,6 +231,26 @@ If devices are configured but not appearing in your Telldus Live account:
 4. If you recently added sensors, increase `live_delay` to 600 seconds to allow
    sensor discovery before the Live connection is established
 
+### Device configuration format
+
+When configuring devices, note the following format rules:
+
+- **protocol**: Must be one of the supported protocols (e.g., `arctech`, `everflourish`)
+- **model**: Can include a brand suffix (e.g., `selflearning-switch:proove`, `selflearning-switch:nexa`)
+
+**Common mistake**: Do NOT put the model in the protocol field.
+
+❌ Wrong:
+```yaml
+protocol: arctech:selflearning-switch
+```
+
+✓ Correct:
+```yaml
+protocol: arctech
+model: selflearning-switch
+```
+
 ## Support
 
 Got questions?
