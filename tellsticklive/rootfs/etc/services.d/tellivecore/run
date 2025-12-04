@@ -2,7 +2,10 @@
 
 if bashio::config.true "enable_live" && bashio::config.has_value "live_uuid"; then
     bashio::log.info "Telldus Live enabled."
-    sleep
+    sleep "$(bashio::config 'live_delay')"
     bashio::log.info "UUID has been entered in config options. Starting Telldus Live..."
     exec tellive_core_connector /etc/tellive.conf
 fi
+
+# Telldus Live is not enabled or not configured, exit gracefully
+exec s6-svc -Od .
