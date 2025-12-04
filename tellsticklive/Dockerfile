@@ -67,6 +67,9 @@ RUN apk add --no-cache \
 # Copy data for add-on
 COPY rootfs /
 
+# Make scripts executable
+RUN chmod +x /usr/local/bin/cloud_sync.py
+
 # Labels
 LABEL \
     io.hass.name="${BUILD_NAME}" \
