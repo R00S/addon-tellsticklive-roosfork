@@ -235,8 +235,13 @@ If devices are configured but not appearing in your Telldus Live account:
 
 When configuring devices, note the following format rules:
 
-- **protocol**: Must be one of the supported protocols (e.g., `arctech`, `everflourish`)
-- **model**: Can include a brand suffix (e.g., `selflearning-switch:proove`, `selflearning-switch:nexa`)
+- **protocol**: Must be one of the supported protocols (e.g., `arctech`, `everflourish`, `fineoffset`)
+- **model**: The device model type, optionally with a brand suffix using colon notation
+
+**Supported model base types:** `codeswitch`, `bell`, `selflearning-switch`, `selflearning-dimmer`,
+`selflearning`, `ecosavers`, `kp100`, `temperaturehumidity`, `temperature`
+
+**Brand suffix format:** `<model>:<brand>` (e.g., `selflearning-switch:proove`, `selflearning-switch:nexa`)
 
 **Common mistake**: Do NOT put the model in the protocol field.
 
@@ -249,6 +254,12 @@ protocol: arctech:selflearning-switch
 ```yaml
 protocol: arctech
 model: selflearning-switch
+```
+
+✓ Also correct (with brand suffix):
+```yaml
+protocol: arctech
+model: selflearning-switch:proove
 ```
 
 ## Support
