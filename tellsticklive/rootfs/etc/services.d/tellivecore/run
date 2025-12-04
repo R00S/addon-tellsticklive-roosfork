@@ -7,6 +7,12 @@ if bashio::config.true "enable_live" && bashio::config.has_value "live_uuid"; th
     exec tellive_core_connector /etc/tellive.conf
 fi
 
-# Telldus Live is not enabled or not configured, exit gracefully
-bashio::log.info "Telldus Live is not enabled or not configured. Service disabled."
+# Check if live is enabled but UUID is not yet configured (registration phase)
+if bashio::config.true "enable_live" && bashio::config.is_empty "live_uuid"; then
+    bashio::log.info "Telldus Live: Waiting for registration to complete via runonce service."
+    bashio::log.info "The tellivecore service will remain disabled until live_uuid is configured."
+else
+    bashio::log.info "Telldus Live is not enabled. Service disabled."
+fi
+
 exec s6-svc -Od .
