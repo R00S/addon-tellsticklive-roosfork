@@ -179,7 +179,7 @@ Turn on device 1:
 ```yaml
 service: hassio.addon_stdin
 data:
-  addon: e9305338_tellsticklive
+  addon: YOUR_ADDON_SLUG
   input:
     function: "on"
     device: 1
@@ -189,12 +189,14 @@ List sensors:
 ```yaml
 service: hassio.addon_stdin
 data:
-  addon: e9305338_tellsticklive
+  addon: YOUR_ADDON_SLUG
   input:
     function: "list-sensors"
 ```
 
-**Note:** Replace `e9305338_tellsticklive` with your actual add-on slug (shown in the add-on logs).
+**Finding your add-on slug:** The add-on slug is shown at the top of the add-on logs. 
+Look for a line like `Add-on: TellStick with Telldus Live` - the slug appears in the 
+system information section (e.g., `e9305338_tellsticklive`). Your slug will be different.
 
 ## How to enable the Telldus Live connection
 
