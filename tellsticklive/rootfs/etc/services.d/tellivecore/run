@@ -8,4 +8,5 @@ if bashio::config.true "enable_live" && bashio::config.has_value "live_uuid"; th
 fi
 
 # Telldus Live is not enabled or not configured, exit gracefully
+bashio::log.info "Telldus Live is not enabled or not configured. Service disabled."
 exec s6-svc -Od .
