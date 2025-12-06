@@ -1,0 +1,126 @@
+Home Assistant Add-on: TellStick with Telldus Live
+====================================================
+
+This software incorporates code and depends on libraries from multiple
+open source projects. This file provides attribution and licensing
+information for all components.
+
+## Original Authors and Copyright Holders
+
+### This Add-on
+Copyright (C) 2019-2024 Erik Hilton <erikhilton73@gmail.com>
+Copyright (C) 2024-2025 R00S (roosfork modifications)
+Licensed under: GNU General Public License v3.0 or later
+
+This add-on is a fork of erik73/addon-tellsticklive, which itself was
+based on the now-deprecated official Home Assistant TellStick add-on.
+
+Source: https://github.com/R00S/addon-tellsticklive-roosfork
+Original: https://github.com/erik73/addon-tellsticklive
+
+### Upstream Projects
+
+#### Telldus Core (telldus-core)
+Copyright (C) Telldus Technologies AB
+Licensed under: GNU Lesser General Public License v2.1
+Source: https://github.com/erik73/telldus (fork maintained by Erik Hilton)
+Original: https://github.com/telldus/telldus
+
+telldus-core provides the core daemon for TellStick hardware communication.
+This add-on compiles and includes telldus-core and tdtool during the
+Docker build process.
+
+#### tellive-py
+Copyright (C) Erik Johansson <erik@ejohansson.se>
+Licensed under: GNU General Public License v3.0 or later
+Source: https://github.com/erijo/tellive-py
+
+tellive-py is a Python wrapper for Telldus Live cloud service, enabling
+TellStick devices to connect to Telldus Live without requiring Telldus Center.
+This add-on installs and uses tellive-py for cloud connectivity features.
+
+#### tellcore-py
+Copyright (C) Erik Johansson <erik@ejohansson.se>
+Licensed under: GNU General Public License v3.0 or later
+Source: https://github.com/erijo/tellcore-py
+
+tellcore-py provides Python bindings for the TellStick Core library,
+allowing Python programs to control TellStick devices. This add-on
+installs and uses tellcore-py via pip.
+
+#### Home Assistant Official Add-ons (deprecated tellstick)
+Copyright (C) Home Assistant Team
+Licensed under: Apache License 2.0
+Source: https://github.com/home-assistant/addons
+
+The original Home Assistant TellStick add-on was deprecated in December 2024.
+This add-on continues to provide TellStick support based on the concepts
+and integration patterns from the original implementation.
+
+## License Compatibility
+
+This combined work is licensed under the GNU General Public License v3.0
+or later because it incorporates GPL v3 licensed components (tellive-py
+and tellcore-py). The GPL v3 license is compatible with:
+
+- LGPL 2.1 (telldus-core) ✓
+- GPL v3+ (tellive-py, tellcore-py) ✓
+- Apache 2.0 (concepts from Home Assistant addons) ✓ (one-way compatible)
+
+## Third-Party Dependencies
+
+This add-on also depends on the following packages installed via apk
+and pip during the Docker build:
+
+### Alpine Linux Packages
+- confuse - Configuration file parser
+- libftdi1 - Library for FTDI USB devices
+- socat - Multipurpose relay for bidirectional data transfer
+
+### Python Packages
+- tellcore-py (as noted above)
+- tellive-py (as noted above)
+
+For specific version information, see the Dockerfile.
+
+## Acknowledgments
+
+We are grateful to the following individuals and organizations for their
+contributions to the open source ecosystem that made this project possible:
+
+- **Erik Hilton (erik73)** - For creating and maintaining the Telldus Live
+  add-on fork and the telldus-core fork that continues to support TellStick
+  hardware after the manufacturer discontinued support.
+
+- **Erik Johansson (erijo)** - For creating and maintaining tellive-py and
+  tellcore-py, the Python libraries that enable TellStick integration.
+
+- **Telldus Technologies AB** - For creating the original TellStick hardware
+  and telldus-core software.
+
+- **Home Assistant Team** - For creating the Home Assistant platform and the
+  original TellStick add-on that inspired this work.
+
+- **The Free Software Foundation** - For creating and maintaining the GNU
+  General Public License that protects software freedom.
+
+## Source Code Availability
+
+The complete source code for this add-on is available at:
+https://github.com/R00S/addon-tellsticklive-roosfork
+
+All upstream dependencies are compiled from source or installed from their
+respective official repositories during the Docker build process. No
+proprietary or closed-source components are included.
+
+## Contact
+
+For issues, questions, or contributions related to this add-on:
+https://github.com/R00S/addon-tellsticklive-roosfork/issues
+
+For issues related to upstream components, please contact the respective
+maintainers through their project repositories.
+
+---
+
+This NOTICE file was last updated: December 2025

@@ -79,7 +79,7 @@ LABEL \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
     org.opencontainers.image.vendor="Erik73 Hassio-Addons" \
     org.opencontainers.image.authors="Erik Hilton <erikhilton73@gmail.com>" \
-    org.opencontainers.image.licenses="MIT" \
+    org.opencontainers.image.licenses="GPL-3.0-or-later" \
     org.opencontainers.image.url="https://github.com/erik73/hassio-addons" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
