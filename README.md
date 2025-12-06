@@ -262,27 +262,67 @@ Got questions or issues?
 
 ## License
 
-MIT License
+GNU General Public License v3.0 or later
 
-Copyright (c) 2019-2024 Erik Hilton
+Copyright (c) 2019-2024 Erik Hilton  
+Copyright (c) 2024-2025 R00S (roosfork modifications)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+See the [LICENSE.md](LICENSE.md) file for the complete license text.
+
+**Note**: This project was originally licensed under MIT by Erik Hilton, but
+has been relicensed to GPL v3 to comply with the licensing requirements of
+included GPL-licensed components (tellive-py, tellcore-py, telldus-core).
+See the [NOTICE](NOTICE) file for detailed attribution and licensing
+information for all incorporated components.
+
+## Acknowledgments
+
+This add-on would not be possible without the contributions of many individuals
+and organizations:
+
+### Core Contributors
+
+- **Erik Hilton (erik73)** - Original author and maintainer of the
+  addon-tellsticklive fork. Erik created this add-on and continues to maintain
+  a fork of the telldus-core library, ensuring TellStick hardware remains
+  usable after the manufacturer discontinued support.
+  - Repository: https://github.com/erik73/addon-tellsticklive
+  - Telldus fork: https://github.com/erik73/telldus
+
+- **Erik Johansson (erijo)** - Author and maintainer of the Python libraries
+  that power this add-on's functionality:
+  - **tellive-py** - Python wrapper for Telldus Live cloud service
+  - **tellcore-py** - Python bindings for TellStick Core library
+  - Repositories: https://github.com/erijo/tellive-py and https://github.com/erijo/tellcore-py
+
+### Upstream Projects
+
+- **Telldus Technologies AB** - Original creators of TellStick hardware and
+  the telldus-core daemon software (licensed under LGPL 2.1)
+
+- **Home Assistant Team** - Creators of the Home Assistant platform and the
+  original TellStick add-on (now deprecated) that inspired this work
+  - Original add-on: https://github.com/home-assistant/addons
+
+### Community
+
+- All contributors who have reported issues, provided feedback, and helped
+  improve this add-on
+
+- The open source community for creating and maintaining the tools and
+  libraries that make this project possible
+
+For detailed licensing and attribution information, see the [NOTICE](NOTICE) file.
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg

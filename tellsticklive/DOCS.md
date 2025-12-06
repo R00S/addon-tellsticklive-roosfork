@@ -339,13 +339,47 @@ Got questions or found a bug?
 - [Open an issue on GitHub][issue]
 - Check the [Home Assistant Community Forums](https://community.home-assistant.io/) for TellStick discussions
 
+## License
+
+This add-on is licensed under the **GNU General Public License v3.0 or later**.
+
+Copyright (c) 2019-2024 Erik Hilton  
+Copyright (c) 2024-2025 R00S (roosfork modifications)
+
+This program incorporates GPL-licensed components and is therefore distributed
+under GPL v3. For complete licensing information and attributions, see the
+LICENSE.md and NOTICE files in the repository.
+
 ## Acknowledgments
 
-This add-on would not be possible without the work of:
+This add-on would not be possible without the contributions of many individuals
+and organizations:
 
-- **Erik Hilton (erik73)** - Original author of the Telldus Live add-on fork
-- **Home Assistant Team** - Original TellStick add-on (now deprecated)
-- **Telldus Technologies** - Original telldusd daemon and protocol specifications
+### Core Contributors
+
+- **Erik Hilton (erik73)** - Original author and maintainer of the
+  addon-tellsticklive fork. Erik created this add-on and continues to maintain
+  a fork of the telldus-core library, ensuring TellStick hardware remains
+  usable after the manufacturer discontinued support.
+  - https://github.com/erik73/addon-tellsticklive
+  - https://github.com/erik73/telldus
+
+- **Erik Johansson (erijo)** - Author and maintainer of:
+  - **tellive-py** (GPL v3+) - Python wrapper for Telldus Live
+  - **tellcore-py** (GPL v3+) - Python bindings for TellStick Core
+  - https://github.com/erijo
+
+### Upstream Projects
+
+- **Telldus Technologies AB** - Original creators of TellStick hardware and
+  the telldus-core daemon (LGPL 2.1)
+
+- **Home Assistant Team** - Creators of Home Assistant and the original
+  TellStick add-on (now deprecated, Apache 2.0)
+
+For detailed licensing and attribution information, see:
+- https://github.com/R00S/addon-tellsticklive-roosfork/blob/main/LICENSE.md
+- https://github.com/R00S/addon-tellsticklive-roosfork/blob/main/NOTICE
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
