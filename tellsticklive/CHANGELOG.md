@@ -1,19 +1,16 @@
-## 3.4.1.4.20261122202308
+## 3.4.1.5.20261122204111
 
 Dev-channel build from `main`.
 
-### Fixed
+### Changed behaviour
 
-- Pressing **Confirm** in the add-device dialog no longer freezes or restarts
-  Home Assistant Core. Building the house/unit sliders for self-learning
-  devices (Nexa, Proove, Anslut and similar) prepared a list of every possible
-  house code — over 67 million numbers — needing gigabytes of memory and a
-  multi-second stall. The first free code is now found without that list.
-- This was the real cause of the Core restarts reported while pairing on a
-  TellStick Net v2 / ZNet (issue #131).
+- None — this is housekeeping on top of 3.4.1.4, with nothing new to see or
+  do. After removing the huge house-code list from the add-device dialog, the
+  same review was run over the rest of the integration, starting with the
+  unit slider in that dialog. No other place builds a list of every possible
+  code, and the unit slider now walks its range instead of copying it, so a
+  wide widget can never freeze Core this way again.
 
 ### After updating
 
-- Adding a device works as before: pick a brand, confirm, and the sliders
-  start on the first code no stored device uses.
-- Devices already added need no change.
+- Nothing to reconfigure. Devices, codes and automations are untouched.
