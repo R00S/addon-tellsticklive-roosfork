@@ -1,16 +1,19 @@
-## 3.4.1.3.20261121222518
+## 3.4.1.4.20261122202308
 
 Dev-channel build from `main`.
 
 ### Fixed
 
-- The **"set up as a mirror"** picker no longer lists your 433 MHz devices as
-  if they were TellSticks. Only real hubs (a Duo, or a Net/ZNet) are offered;
-  discovered or ignored device entries are left out.
-- **Move device to another hub** uses the same filter and no longer offers
-  those entries either.
+- Pressing **Confirm** in the add-device dialog no longer freezes or restarts
+  Home Assistant Core. Building the house/unit sliders for self-learning
+  devices (Nexa, Proove, Anslut and similar) prepared a list of every possible
+  house code — over 67 million numbers — needing gigabytes of memory and a
+  multi-second stall. The first free code is now found without that list.
+- This was the real cause of the Core restarts reported while pairing on a
+  TellStick Net v2 / ZNet (issue #131).
 
 ### After updating
 
-- Nothing to reconfigure. If you picked a device by mistake while setting up
-  a mirror, delete that mirror entry and add it again.
+- Adding a device works as before: pick a brand, confirm, and the sliders
+  start on the first code no stored device uses.
+- Devices already added need no change.
