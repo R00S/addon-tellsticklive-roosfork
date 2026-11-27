@@ -1,17 +1,16 @@
-## 3.4.2.1.20261127011202
+## 3.4.2.2.20261127013027
 
 Dev-channel build from `main`.
 
-### Fixed
+### New
 
-- The transmitter entity added in 3.4.2.0 never appeared. Home Assistant
-  registered it as disabled — a preference stored on the integration entry —
-  so it was hidden and could not be chosen as a sender. It is now registered
-  enabled, whatever that preference says. If you already installed 3.4.2.0,
-  update and restart: the entity switches itself back on.
+- A diagnostic action, `tellstick_local.poc_rf_command`, that sends raw
+  433 MHz timings through the TellStick the same way another integration
+  does. It exists so a transmitter can be tested without installing a
+  consumer integration first. Nothing is stored and nothing changes for
+  your own devices.
 
 ### After updating
 
-- Requires Home Assistant 2026.5 or later.
-- Nothing to reconfigure; your own devices, codes and automations are
-  untouched.
+- Requires Home Assistant 2026.5 or later. Safe to ignore unless you are
+  testing.
