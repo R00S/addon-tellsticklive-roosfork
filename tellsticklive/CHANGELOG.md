@@ -1,18 +1,14 @@
-## 3.4.2.2.20261127023941
+## 3.4.2.3.20261127024700
 
 Dev-channel build from `main`.
 
-### New
+### Changed behaviour
 
-- A diagnostic action, `tellstick_local.poc_rf_command`, that sends raw
-  433 MHz timings through the TellStick the same way another integration
-  does. It exists so a transmitter can be tested without installing a
-  consumer integration first. Nothing is stored and nothing changes for
-  your own devices.
+- None — nothing works differently in Home Assistant. This release carries
+  the documentation for the RF transmitter feature and the corrected note
+  about very long pulses, and it exists so the app delivers that
+  documentation instead of leaving the old text on your system.
 
 ### After updating
 
-- Requires Home Assistant 2026.5 or later. Safe to ignore unless you are
-  testing.
-- This is the first stable release since 3.3.3.0: everything from 3.4.0.x and
-  3.4.1.x is included, and the sections below describe those changes.
+- Nothing to reconfigure. Requires Home Assistant 2026.5 or later.
