@@ -1,16 +1,23 @@
-## 3.4.1.5.20261122204111
+## 3.4.2.0.20261127010238
 
 Dev-channel build from `main`.
 
-### Changed behaviour
+### New
 
-- None — this is housekeeping on top of 3.4.1.4, with nothing new to see or
-  do. After removing the huge house-code list from the add-device dialog, the
-  same review was run over the rest of the integration, starting with the
-  unit slider in that dialog. No other place builds a list of every possible
-  code, and the unit slider now walks its range instead of copying it, so a
-  wide widget can never freeze Core this way again.
+- The TellStick can now be used as a radio frequency transmitter by other
+  integrations. Until now it only controlled its own 433 MHz devices; it can
+  now send whatever another integration asks it to send — for example a Novy
+  cooker hood or a set of Honeywell string lights added through Home
+  Assistant's own device integrations. Pick the TellStick as the transmitter
+  when that integration asks, and its commands go out through your TellStick.
+  Works on a TellStick Duo and on the original TellStick Net (v1).
+- Long pulses and gaps are split into several shorter ones, so signals with a
+  long start or end pulse can be sent too. A mirror reinforces these commands
+  exactly like your own devices' commands.
 
 ### After updating
 
-- Nothing to reconfigure. Devices, codes and automations are untouched.
+- Requires Home Assistant 2026.5 or later.
+- Nothing to reconfigure: devices, codes and automations are untouched. No
+  new device or entity appears unless another integration asks for a
+  transmitter.
