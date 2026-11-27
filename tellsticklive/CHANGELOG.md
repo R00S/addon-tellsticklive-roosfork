@@ -1,4 +1,4 @@
-## 3.4.2.2.20261127013027
+## 3.4.2.2.20261127023941
 
 Dev-channel build from `main`.
 
@@ -14,3 +14,5 @@ Dev-channel build from `main`.
 
 - Requires Home Assistant 2026.5 or later. Safe to ignore unless you are
   testing.
+- This is the first stable release since 3.3.3.0: everything from 3.4.0.x and
+  3.4.1.x is included, and the sections below describe those changes.
